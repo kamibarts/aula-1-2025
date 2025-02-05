@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Descontos</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+    }
+    h1 {
+        color: #333;
+    }
+    input, select {
+        padding: 5px;
+        margin: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    button {
+        padding: 5px 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #1b26b6;
+        color: #fff;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #444;
+    }
+    p {
+        margin: 10px;
+        color: #333;
+    }
+</style>
+<body>
+    <h1>Calculadora de Descontos</h1>
+    <input type="number" id="preco" placeholder="Preço da Peça">
+    <select id="tipoPeca">
+        <option value="camisa">Camisa</option>
+        <option value="bermuda">Bermuda</option>
+        <option value="calca">Calça</option>
+    </select>
+    <button onclick="calcularDesconto()">Calcular Desconto</button>
+    <p id="resultado"></p>
+</body>
+<script>
+    function calcularDesconto() {
+        let preco = parseFloat(document.getElementById('preco').value);
+        let tipoPeca = document.getElementById('tipoPeca').value;
+        let desconto;
+        let resultado = document.getElementById('resultado');
+
+        if (tipoPeca === 'camisa') {
+            desconto = 0.20; // 20% de desconto
+        } else if (tipoPeca === 'bermuda') {
+            desconto = 0.10; // 10% de desconto
+        } else if (tipoPeca === 'calca') {
+            desconto = 0.15; // 15% de desconto
+        }
+
+        let valorDesconto = preco * desconto;
+        let precoFinal = preco - valorDesconto;
+
+        resultado.innerHTML = `Desconto: R$ ${valorDesconto.toFixed(2)}<br>Preço Final: R$ ${precoFinal.toFixed(2)}`;
+    }
+</script>
+</html>

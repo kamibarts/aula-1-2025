@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reajuste de Preço</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+    }
+    h1 {
+        color: #333;
+    }
+    input {
+        padding: 5px;
+        margin: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    button {
+        padding: 5px 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #1b26b6;
+        color: #fff;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #444;
+    }
+    p {
+        margin: 10px;
+        color: #333;
+    }
+</style>
+<body>
+    <h1>Correção de Preço</h1>
+    <input type="text" id="nome" placeholder="Nome da Mercadoria">
+    <input type="number" id="preco" placeholder="Preço">
+    <button onclick="reajustarPreco()">Calcular Reajuste</button>
+    <p id="resultado"></p>
+</body>
+<script>
+    function reajustarPreco() {
+        let nome = document.getElementById('nome').value;
+        let preco = parseFloat(document.getElementById('preco').value);
+        let resultado = document.getElementById('resultado');
+        let aumento;
+
+        if (preco < 1000) {
+            aumento = preco * 0.05;
+        } else {
+            aumento = preco * 0.07;
+        }
+
+        let novoPreco = preco + aumento;
+
+        resultado.innerHTML = `Mercadoria: ${nome}<br> Novo Preço: R$ ${novoPreco.toFixed(2)}`;
+    }
+</script>
+</html>

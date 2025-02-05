@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reajuste Salarial</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+    }
+    h1 {
+        color: #333;
+    }
+    input {
+        padding: 5px;
+        margin: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    button {
+        padding: 5px 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #1b26b6;
+        color: #fff;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #444;
+    }
+    p {
+        margin: 10px;
+        color: #333;
+    }
+</style>
+<body>
+    <h1>Calculadora de Reajuste Salarial</h1>
+    <input type="number" id="salario" placeholder="Salário Atual">
+    <button onclick="calcularReajuste()">Calcular Reajuste</button>
+    <p id="resultado"></p>
+</body>
+<script>
+    function calcularReajuste() {
+        let salarioAtual = parseFloat(document.getElementById('salario').value);
+        let percentualAumento;
+        let resultado = document.getElementById('resultado');
+
+        if (salarioAtual >= 1500 && salarioAtual < 1750) {
+            percentualAumento = 0.15; // 15% de aumento
+        } else if (salarioAtual >= 1750 && salarioAtual < 2000) {
+            percentualAumento = 0.12; // 12% de aumento
+        } else if (salarioAtual >= 2000 && salarioAtual < 3000) {
+            percentualAumento = 0.09; // 9% de aumento
+        } else if (salarioAtual >= 3000) {
+            percentualAumento = 0.06; // 6% de aumento
+        } else {
+            percentualAumento = 0; // Sem aumento
+        }
+
+        let aumento = salarioAtual * percentualAumento;
+        let novoSalario = salarioAtual + aumento;
+
+        resultado.innerHTML = `Aumento: R$ ${aumento.toFixed(2)}<br>Novo Salário: R$ ${novoSalario.toFixed(2)}`;
+    }
+</script>
+</html>

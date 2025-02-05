@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examinador de Triângulo</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+    }
+    h1 {
+        color: #333;
+    }
+    input {
+        padding: 5px;
+        margin: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    button {
+        padding: 5px 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #1b26b6;
+        color: #fff;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #444;
+    }
+    p {
+        margin: 10px;
+        color: #333;
+    }
+</style>
+<body>
+    <h1>Examinador de Triângulo</h1>
+    <input type="number" id="ladoA" placeholder="Lado A">
+    <input type="number" id="ladoB" placeholder="Lado B">
+    <input type="number" id="ladoC" placeholder="Lado C">
+    <button onclick="verificarTriangulo()">Verificar</button>
+    <p id="resultado"></p>
+</body>
+<script>
+    function verificarTriangulo() {
+        let ladoA = parseFloat(document.getElementById('ladoA').value);
+        let ladoB = parseFloat(document.getElementById('ladoB').value);
+        let ladoC = parseFloat(document.getElementById('ladoC').value);
+        let resultado = document.getElementById('resultado');
+
+        if (ladoA === ladoB && ladoB === ladoC) {
+            resultado.innerHTML = "EQUILÁTERO";
+        } else if (ladoA !== ladoB && ladoB !== ladoC && ladoA !== ladoC) {
+            resultado.innerHTML = "ESCALENO";
+        } else {
+            resultado.innerHTML = "ISÓSCELES";
+        }
+    }
+</script>
+</html>
